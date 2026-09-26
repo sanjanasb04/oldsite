@@ -1,0 +1,496 @@
+# Copyright (C) 2026 ThimPress
+# This file is distributed under the same license as the LearnPress - H5P Content plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: LearnPress - H5P Content 4.0.9\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/learnpress-h5p\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-03-13T06:35:48+03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: learnpress-h5p\n"
+
+#. Plugin Name of the plugin
+#: learnpress-h5p.php
+msgid "LearnPress - H5P Content"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: learnpress-h5p.php
+msgid "https://thimpress.com/product/h5p/"
+msgstr ""
+
+#. Description of the plugin
+#: learnpress-h5p.php
+msgid "H5P Content add-on for LearnPress."
+msgstr ""
+
+#. Author of the plugin
+#: learnpress-h5p.php
+msgid "ThimPress"
+msgstr ""
+
+#. Author URI of the plugin
+#: learnpress-h5p.php
+msgid "http://thimpress.com"
+msgstr ""
+
+#: inc/Ajax/H5PAjax.php:52
+#: inc/load.php:376
+msgid "User is invalid!"
+msgstr ""
+
+#: inc/Ajax/H5PAjax.php:57
+#: inc/load.php:381
+msgid "Course is invalid!"
+msgstr ""
+
+#: inc/Ajax/H5PAjax.php:62
+#: inc/load.php:386
+msgid "H5P is invalid!"
+msgstr ""
+
+#: inc/Ajax/H5PAjax.php:67
+#: inc/load.php:391
+msgid "You have not enrolled in this course!"
+msgstr ""
+
+#: inc/Ajax/H5PAjax.php:81
+#: inc/load.php:405
+msgid "H5P is not assigned to this item!"
+msgstr ""
+
+#: inc/Ajax/H5PAjax.php:87
+#: inc/load.php:329
+#: inc/load.php:411
+msgid "H5P not result"
+msgstr ""
+
+#: inc/Ajax/H5PAjax.php:114
+#: inc/load.php:354
+msgid "Congratulation! You completed this!"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:35
+#: inc/custom-post-types/lph5p.php:145
+msgid "New H5P Item"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:103
+msgid "<p>Op! ID not found</p>"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:107
+msgid "<p>Op! The h5p does not exist</p>"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:113
+msgid "<p>Sorry! You don't have permission to duplicate this h5p</p>"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:124
+msgid "<p>Sorry! Failed to duplicate h5p!</p>"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:144
+#, php-format
+msgid "Invalid h5p with ID \"%d\"."
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:226
+#: inc/class-lp-h5p-settings.php:11
+msgid "H5P"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:227
+#: inc/custom-post-types/lph5p.php:138
+#: inc/custom-post-types/lph5p.php:143
+#: inc/custom-post-types/lph5p.php:270
+#: inc/custom-post-types/lph5p.php:302
+#: inc/functions.php:718
+#: inc/load.php:239
+#: templates/profile/tabs/h5p_items.php:39
+msgid "H5P Items"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:242
+msgid "All"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:246
+#: templates/content-h5p/buttons/complete.php:27
+#: templates/profile/tabs/h5p_items.php:96
+msgid "Completed"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:251
+msgid "Doing"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:256
+msgid "Passed"
+msgstr ""
+
+#: inc/class-lp-h5p-curd.php:261
+msgid "Failed"
+msgstr ""
+
+#: inc/class-lp-h5p-settings.php:24
+msgid "H5P Button Complete"
+msgstr ""
+
+#: inc/class-lp-h5p-settings.php:28
+msgid "Enable/Disable"
+msgstr ""
+
+#: inc/class-lp-h5p.php:191
+msgid "Unlimited"
+msgstr ""
+
+#: inc/class-lp-h5p.php:207
+msgid "Finish h5p"
+msgstr ""
+
+#: inc/class-lp-h5p.php:208
+msgid "Are you sure you want to finish this h5p?"
+msgstr ""
+
+#: inc/class-lp-h5p.php:211
+msgid "Retake h5p"
+msgstr ""
+
+#: inc/class-lp-h5p.php:212
+msgid "Are you sure you want to retake this h5p?"
+msgstr ""
+
+#: inc/class-lp-h5p.php:215
+msgid "Time's up!"
+msgstr ""
+
+#: inc/class-lp-h5p.php:216
+msgid "The time is up! Your h5p will automate come to finish"
+msgstr ""
+
+#: inc/class-lp-h5p.php:218
+msgid "Congrats! You have finished this h5p"
+msgstr ""
+
+#: inc/class-lp-h5p.php:219
+msgid "Congrats! You have re-taken this h5p. Please wait a moment and the page will reload"
+msgstr ""
+
+#: inc/class-lp-h5p.php:251
+#, php-format
+msgid "The function %s doesn't exist"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:75
+msgid "Connect to H5P Content success!"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:139
+#: inc/custom-post-types/lph5p.php:140
+#: inc/custom-post-types/lph5p.php:343
+#: inc/load.php:580
+msgid "H5P Item"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:141
+msgid "Add New H5P Item"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:142
+msgid "Edit H5P Item"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:144
+msgid "View H5P Item"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:146
+msgid "Update H5P Item"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:147
+msgid "Search H5P Items"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:148
+#, php-format
+msgid "You have not got any H5P items yet. Click <a href=\"%s\">Add new</a> to start"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:149
+msgid "No H5P items found in Trash"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:188
+#: inc/custom-post-types/lph5p.php:214
+msgid "There is no items to select. Create <a href=\""
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:201
+#: inc/custom-post-types/lph5p.php:674
+msgid "General Settings"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:207
+#: inc/custom-post-types/metabox.php:58
+msgid "Interact H5P"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:224
+#: inc/custom-post-types/metabox.php:79
+msgid "Passing Grade (%)"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:225
+#: inc/custom-post-types/metabox.php:80
+msgid "Requires user reached this point to pass this h5p content item."
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:275
+#, php-format
+msgid "Example link is %s"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:306
+msgid "Public user profile H5P items."
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:306
+msgid "Allow user to turn on/off sharing profile H5P Items option"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:367
+#: inc/custom-post-types/lph5p.php:394
+msgid "<p>Evaluate by number of H5P items completed per number of total H5P items.</p>"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:368
+#: inc/custom-post-types/lph5p.php:395
+msgid "<p>=> Result = Completed / Total</p>"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:369
+#: inc/custom-post-types/lph5p.php:396
+msgid "<p>Evaluate by achieved points of H5P passed per total point of all H5P.</p>"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:371
+#: inc/custom-post-types/lph5p.php:398
+msgid "<p>Evaluate by achieved points of H5P + Quizzes passed per total point of all H5P and Quizzes.</p>"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:377
+#: inc/custom-post-types/lph5p.php:402
+msgid "Evaluate via results of the H5P completed"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:378
+#: inc/custom-post-types/lph5p.php:403
+msgid "Evaluate via results of H5P passed"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:379
+#: inc/custom-post-types/lph5p.php:404
+msgid "Evaluate via results of H5P and Quizzes passed"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:511
+msgid "Author"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:512
+#: templates/profile/tabs/h5p_items.php:38
+msgid "Course"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:513
+msgid "Interacted H5P"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:612
+msgid "Edit"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:614
+msgid "View"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:618
+msgid "Not assigned yet"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:627
+msgid "Not Yet!"
+msgstr ""
+
+#: inc/custom-post-types/lph5p.php:683
+msgid "Assigned"
+msgstr ""
+
+#: inc/custom-post-types/metabox.php:21
+#, php-format
+msgid "There is no items to select. Create %s."
+msgstr ""
+
+#: inc/custom-post-types/metabox.php:25
+msgid "here"
+msgstr ""
+
+#: inc/custom-post-types/metabox.php:36
+msgid "Edit the H5P item"
+msgstr ""
+
+#: inc/functions.php:70
+msgid "Course does not exist or does not contain this h5p"
+msgstr ""
+
+#: inc/functions.php:75
+msgid "User has not already enrolled the course of this H5P item"
+msgstr ""
+
+#: inc/functions.php:80
+msgid "User has already finished the course of this H5P item"
+msgstr ""
+
+#: inc/functions.php:86
+msgid "User has completed this H5P item"
+msgstr ""
+
+#: inc/functions.php:91
+msgid "You have to login for starting h5p item."
+msgstr ""
+
+#: inc/functions.php:113
+msgid "Doing H5p failed!"
+msgstr ""
+
+#: inc/load.php:194
+msgid "My H5P items"
+msgstr ""
+
+#: inc/load.php:198
+msgid "Public your profile H5P items"
+msgstr ""
+
+#: inc/load.php:287
+#: inc/load.php:438
+msgid "Success"
+msgstr ""
+
+#: inc/load.php:293
+#: inc/load.php:308
+#: inc/load.php:328
+msgid "Error"
+msgstr ""
+
+#: inc/load.php:294
+#: inc/load.php:309
+msgid "You did not enroll course"
+msgstr ""
+
+#: inc/lp-h5p-template-hooks.php:129
+#: templates/content-h5p/intro.php:14
+msgid "This item has not assigned to any H5P content"
+msgstr ""
+
+#: inc/lp-h5p-template-hooks.php:153
+msgid "Please enroll in this course to start the H5P activity."
+msgstr ""
+
+#: inc/lp-h5p-template-hooks.php:165
+msgid "You have finished the course. Please enroll in this course again to start the H5P activity."
+msgstr ""
+
+#: templates/content-h5p/buttons/complete.php:21
+msgid "You have completed this H5P at "
+msgstr ""
+
+#: templates/content-h5p/buttons/complete.php:33
+msgid "Do you want to complete the H5P"
+msgstr ""
+
+#: templates/content-h5p/buttons/complete.php:44
+msgid "Complete H5P"
+msgstr ""
+
+#: templates/content-h5p/buttons/complete.php:51
+msgid "Complete"
+msgstr ""
+
+#: templates/content-h5p/buttons/result.php:66
+msgid "Congratulation, you already completed this!"
+msgstr ""
+
+#. translators: %s: graduation result
+#: templates/content-h5p/buttons/result.php:76
+#, php-format
+msgid "Your result is <strong>%s</strong>"
+msgstr ""
+
+#: templates/content-h5p/buttons/result.php:78
+msgid "Ungraded"
+msgstr ""
+
+#: templates/content-h5p/summary/advancedblanks.php:25
+#: templates/content-h5p/summary/dragtext.php:21
+#: templates/content-h5p/summary/interactivevideo.php:25
+#: templates/content-h5p/summary/markthewords.php:21
+#: templates/content-h5p/summary/multichoice.php:21
+#: templates/content-h5p/summary/singlechoiceset.php:25
+msgid "Solutions:"
+msgstr ""
+
+#: templates/content-h5p/summary/multichoice.php:30
+msgid "Correct Answers:"
+msgstr ""
+
+#: templates/profile/tabs/h5p_items.php:24
+msgid "My H5P Items"
+msgstr ""
+
+#: templates/profile/tabs/h5p_items.php:40
+msgid "Passing Grade"
+msgstr ""
+
+#: templates/profile/tabs/h5p_items.php:41
+msgid "Status"
+msgstr ""
+
+#: templates/profile/tabs/h5p_items.php:42
+msgid "Mark"
+msgstr ""
+
+#: templates/profile/tabs/h5p_items.php:43
+msgid "Interval"
+msgstr ""
+
+#: templates/profile/tabs/h5p_items.php:96
+msgid "Not completed"
+msgstr ""
+
+#: templates/profile/tabs/h5p_items.php:105
+msgid "completed"
+msgstr ""
+
+#: templates/profile/tabs/h5p_items.php:107
+msgid "passed"
+msgstr ""
+
+#: templates/profile/tabs/h5p_items.php:107
+msgid "failed"
+msgstr ""
+
+#: templates/profile/tabs/h5p_items.php:144
+msgid "No h5p items!"
+msgstr ""
+
+#: templates/single-course/user-progress.php:40
+msgid "H5P completed"
+msgstr ""

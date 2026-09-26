@@ -1,0 +1,407 @@
+/**
+ * Uncanny Groups Plugin Compatibility
+ * 
+ * CSS that helps style all frontend elements that this plugin
+ * adds to a LearnDash site.
+ */
+
+/**
+ * TABLE OF CONTENTS
+ *
+ * 0.0 - Global
+ * 1.0 - Buttons
+ * 2.0 - Text Links
+ * 3.0 - Modals
+ * 4.0 - Tables
+ * 5.0 - Dropdown Menus
+ * 6.0 - Form Fields
+ * 7.0 - Navigation / Pagination
+ * 8.0 - Manage Progress
+ */
+
+/**
+ * 0.0 - Global
+ */
+
+// Inherit Global Border Radius
+body .uo-groups-bulk {
+	border-radius: var(--ldx-global-border-radius);
+}
+
+
+/**
+ * 1.0 - Buttons
+ */
+
+// ALL Buttons
+body .uo-groups .uo-btn,
+body .uo-groups.uo-quiz-report .buttons-csv,
+body .uo-groups.uo-quiz-report a.paginate_button,
+body .uo-groups .uo-groups-table .assignment_approve_single,
+body .uo-groups .uo-groups-table .essay_approve_single,
+body .uo-groups .uo-select-jplist .jplist-dd-panel,
+.group-assignment-modal #sfwd-assignment_download .button,
+.uo-groups .uo-groups-datatable-header .dt-button,
+.uo-groups .uo-groups-datatable-footer .paginate_button {
+	border-radius: var(--ldx-btn-border-radius);
+	transition: all 0.1s linear;
+}
+// Dropdown menus
+body .uo-groups .uo-groups-list .uo-btn {
+	border-radius: 0;
+}
+
+/* Remove Border when using LDX background & text colors */
+#group-management-enrolled-users-table-send-password .uo-btn,
+body .uo-groups .uo-groups-table .assignment_approve_single,
+body .uo-groups .uo-groups-table .essay_approve_single,
+.leader-table-actions .group-management-buttons .uo-btn,
+.group-management-form .uo-row-footer .submit-group-management-form,
+body .uo-groups.uo-quiz-report .buttons-csv,
+.group-assignment-modal #sfwd-assignment_download .button,
+.group-assignment-modal #uo-assignment-update-button,
+body .uo-groups #uo-essay-edit-button,
+.uo-groups #group-trash-assignments-button,
+.uo-groups #group-approve-assignments-button,
+body .uo-groups-bulk .uo-btn.submit-group-management-form,
+.uo-groups .uo-groups-datatable-header .buttons-csv {
+	border: 0;
+}
+
+/* Primary Buttons */
+// Send Password Reset
+#group-management-enrolled-users-table-send-password .uo-btn,
+// "Approve" button in essay/assignment tables
+body .uo-groups .uo-groups-table .assignment_approve_single,
+body .uo-groups .uo-groups-table .essay_approve_single,
+// "Add Group Leader"
+.leader-table-actions .group-management-buttons .uo-btn,
+// "Add Group Leader" (in modal)
+.group-management-form .uo-row-footer .submit-group-management-form,
+// "Approve" in Assignment Management modal
+.group-assignment-modal #uo-assignment-update-button,
+// "Save" in Essay Management modal
+body .uo-groups #uo-essay-edit-button,
+// Bulk Add Users: Submit Button
+body .uo-groups-bulk .uo-btn.submit-group-management-form {
+	background-color: var(--ldx-btn-primary-bg-color);
+	color: var(--ldx-btn-primary-text-color);
+	font-weight: 600;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: var(--ldx-btn-primary-bg-color-hover);
+		color: var(--ldx-btn-primary-text-color-hover);
+	}
+}
+
+/* Standard Buttons */
+// "CSV Export"
+body .uo-groups.uo-quiz-report .buttons-csv,
+// "Download" in Assignment Management modal
+.group-assignment-modal #sfwd-assignment_download .button,
+// CSV Export in Course Report
+.uo-groups .uo-groups-datatable-header .buttons-csv {
+	background-color: var(--ldx-btn-standard-bg-color);
+	color: var(--ldx-btn-standard-text-color);
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: var(--ldx-btn-standard-bg-color-hover);
+		color: var(--ldx-btn-standard-text-color-hover);
+	}
+}
+
+/* "Approve" Buttons */
+body .uo-groups .uo-groups-table .assignment_approve_single,
+body .uo-groups .uo-groups-table .essay_approve_single {
+	padding: 5px 8px;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+body .uo-groups .uo-groups-table .assignment_approve_single {
+	margin-top: 0.375em;
+}
+
+/* "Approve Assignments" Button */
+.uo-groups #group-approve-assignments-button {
+	background-color: var(--ldx-color-correct);
+	color: #fff;
+	opacity: 0.9;
+
+	&:hover,
+	&:active,
+	&:focus {
+		opacity: 1;
+		color: #fff;
+		box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+	}
+}
+
+/* "Delete" Buttons */
+.uo-groups #group-trash-assignments-button {
+	background-color: var(--ldx-color-incorrect);
+	color: #fff;
+	opacity: 0.9;
+
+	&:hover,
+	&:active,
+	&:focus {
+		opacity: 1;
+		color: #fff;
+		box-shadow: 0 0 0 1px rgba(0,0,0,0.2);
+	}
+}
+
+/* Button Toggles */
+// "Users" & "Groups" dropdown
+body .uo-groups .uo-groups-list-of-btns-main,
+// "__ Per Page" dropdown
+body .uo-groups .uo-select-jplist .jplist-dd-panel,
+// Next/Previous pagination at bottom of tables
+.uo-groups-datatable-footer .paginate_button.next,
+.uo-groups-datatable-footer .paginate_button.previous,
+// Group Management buttons (back to group management)
+.uo-groups .uo-groups-report-go-back .uo-btn {
+	border-color: var(--ldx-btn-standard-bg-color);
+	color: var(--ldx-btn-standard-bg-color);
+
+	&:hover,
+	&:active,
+	&:focus,
+	&:hover::after {
+		border-color: var(--ldx-btn-standard-bg-color-hover);
+		color: var(--ldx-btn-standard-bg-color-hover);
+	}
+}
+
+// "Remove Group Leader(s)" button
+.group-leader-management-buttons {
+	margin: 0 8px;
+}
+
+// Pagination buttons at bottom of tables
+.uo-groups-datatable-footer .paginate_button.next,
+.uo-groups-datatable-footer .paginate_button.previous,
+.uo-groups-datatable-footer .paginate_button.current {
+	padding: 6px 12px;
+}
+.uo-groups-datatable-footer .paginate_button.current {
+	font-weight: bold;
+}
+
+// Quiz Report, CSV Export
+body .uo-groups.uo-quiz-report .buttons-csv {
+	line-height: 1.4;
+	padding: 6px 12px;
+}
+
+
+/**
+ * 2.0 - Text Links
+ */
+
+body .uo-groups a,
+body .uo-groups .uo-groups-group-courses-list a,
+body .dataTables-filter-columns__toggle label,
+body .uo-groups-bulk-close {
+	border: 0;
+	color: var(--ldx-color-link);
+
+	&:hover,
+	&:active,
+	&:focus {
+		color: var(--ldx-color-link-hover);
+	}
+}
+
+body .uo-groups-bulk-close:hover,
+body .uo-groups-bulk-close:active,
+body .uo-groups-bulk-close:focus {
+	text-decoration: underline;
+}
+
+
+
+/**
+ * 3.0 - Modals
+ */
+body .group-management-modal.uo-modal {
+	border-radius: var(--ldx-global-border-radius);
+}
+
+
+/**
+ * 4.0 - Tables
+ */
+
+// <table>
+// body .uo-groups .uo-table,
+// body .uo-groups.uo-quiz-report table {
+// 	border-radius: var(--ldx-global-border-radius);
+// }
+
+body .uo-groups .uo-groups-table td,
+body .uo-groups .uo-groups-table th {
+	line-height: 1.2;
+}
+
+// Table Content
+body .uo-groups .uo-table .uo-table-content,
+body .uo-groups .uo-groups-table td {
+	font-size: inherit; // instead of forcing 14px
+}
+
+// Customize Columns
+.uo-groups .dataTables-filter-columns {
+	margin-bottom: 10px;
+}
+.dataTables-filter-columns-field:checked~.dataTables-filter-columns__fields {
+	padding: 0.375em 0.75em;
+	background: rgba( 0, 0, 0, 0.08 );
+	border-radius: calc(var(--ldx-global-border-radius) * 0.6);
+	margin-top: 5px;
+	animation: 200ms ease-in-out 0s 1 normal both ldx-fadein-slidedown;
+}
+
+// Essay & Assignment Titles
+.uo-groups .uo-groups-table td .edit_assignment_single,
+.uo-groups .uo-groups-table td .edit_essay_single {
+	// font-size: 110%;
+	font-weight: 600;
+	color: inherit;
+
+	&:hover {
+		color: var(--ldx-color-link-hover);
+	}
+}
+
+/**
+ * Row Actions
+ */
+body .uo-groups-essays .row-actions,
+body .uo-groups-assignments .row-actions {
+	margin-top: 0.375em;
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	.trash a {
+		color: var(--ldx-color-incorrect);
+	}
+}
+
+/**
+ * + and - icons when on smaller devices
+ */
+body table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child::before,
+body table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child::before {
+	background-color: var(--ldx-color-correct);
+}
+body table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child::before,
+body table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child::before {
+	background-color: var(--ldx-color-incorrect);
+}
+
+
+/**
+ * 5.0 - Dropdown Menus
+ */
+body .uo-groups-list-of-btns .uo-groups-list,
+body .uo-groups .uo-select-jplist .uo-select-dropdown {
+	box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.15 );
+}
+
+
+/**
+ * 6.0 - Form Fields
+ */
+body .uo-groups .uo-input,
+body .uo-groups .dataTables_filter input,
+body #ulg-manage-progress-user-search-field,
+body .uo-groups.uo-quiz-report #uo-quiz-report-table_filter input,
+body .uo-groups.uo-quiz-report input[type="number"],
+body .group-management-modal .uo-row input {
+	border-radius: calc(var(--ldx-global-border-radius) * 0.7);
+}
+
+
+/**
+ * 7.0 - Navigation / Pagination
+ */
+// Pagination for Tables in Progress Manager
+body .uo-groups .uo-groups-pagination .jplist-panel .uo-center button {
+	border-radius: calc(var(--ldx-btn-border-radius) * 0.7);
+}
+
+
+/**
+ * 8.0 - Manage Progress
+ */
+// Expanded boxes
+body .ulg-manage-progress-course--expanded .ulg-manage-progress-course__row .ulg-manage-progress-course__toggle-btn,
+body .ulg-manage-progress-course--expanding .ulg-manage-progress-course__row .ulg-manage-progress-course__toggle-btn,
+body .ulg-manage-progress-lesson--expanded .ulg-manage-progress-lesson__row .ulg-manage-progress-lesson__toggle-btn,
+body .ulg-manage-progress-lesson--expanding .ulg-manage-progress-lesson__row .ulg-manage-progress-lesson__toggle-btn,
+body .ulg-manage-progress-topic--expanded .ulg-manage-progress-topic__row .ulg-manage-progress-topic__toggle-btn,
+body .ulg-manage-progress-topic--expanding .ulg-manage-progress-topic__row .ulg-manage-progress-topic__toggle-btn {
+	background-color: #999;
+	border-right-color: #999;
+}
+
+// Checkmarks Completed
+body .ulg-manage-progress-course--completed .ulg-manage-progress-course__row .ulg-manage-progress-course__details .ulg-manage-progress-course__left .ulg-manage-progress-course__progress-actions .ulg-manage-progress-course__progress-action-checkbox,
+body .ulg-manage-progress-lesson--completed .ulg-manage-progress-lesson__row .ulg-manage-progress-lesson__details .ulg-manage-progress-lesson__left .ulg-manage-progress-lesson__progress-actions .ulg-manage-progress-lesson__progress-action-checkbox,
+body .ulg-manage-progress-topic--completed .ulg-manage-progress-topic__row .ulg-manage-progress-topic__details .ulg-manage-progress-topic__left .ulg-manage-progress-topic__progress-actions .ulg-manage-progress-topic__progress-action-checkbox,
+body .ulg-manage-progress-quiz--completed .ulg-manage-progress-quiz__row .ulg-manage-progress-quiz__details .ulg-manage-progress-quiz__left .ulg-manage-progress-quiz__progress-actions .ulg-manage-progress-quiz__progress-action-checkbox {
+	background-color: var(--ldx-color-correct);
+	border-color: var(--ldx-color-correct);
+
+	&::before,
+	span {
+		color: #fff;
+	}
+}
+
+// Action Links
+body .ulg-manage-progress-course__row .ulg-manage-progress-course__details .ulg-manage-progress-course__left .ulg-manage-progress-course__progress-actions--need-to-confirm .ulg-manage-progress-course__progress-action-cancel,
+body .ulg-manage-progress-course__row .ulg-manage-progress-course__details .ulg-manage-progress-course__left .ulg-manage-progress-course__progress-actions--need-to-confirm .ulg-manage-progress-course__progress-action-checkbox,
+body .ulg-manage-progress-lesson__row .ulg-manage-progress-lesson__details .ulg-manage-progress-lesson__left .ulg-manage-progress-lesson__progress-actions--need-to-confirm .ulg-manage-progress-lesson__progress-action-cancel,
+body .ulg-manage-progress-lesson__row .ulg-manage-progress-lesson__details .ulg-manage-progress-lesson__left .ulg-manage-progress-lesson__progress-actions--need-to-confirm .ulg-manage-progress-lesson__progress-action-checkbox,
+body .ulg-manage-progress-topic__row .ulg-manage-progress-topic__details .ulg-manage-progress-topic__left .ulg-manage-progress-topic__progress-actions--need-to-confirm .ulg-manage-progress-topic__progress-action-cancel,
+body .ulg-manage-progress-topic__row .ulg-manage-progress-topic__details .ulg-manage-progress-topic__left .ulg-manage-progress-topic__progress-actions--need-to-confirm .ulg-manage-progress-topic__progress-action-checkbox {
+	border-radius: var(--ldx-btn-border-radius);
+}
+
+// "Cancel" action link
+body .ulg-manage-progress-course__row .ulg-manage-progress-course__details .ulg-manage-progress-course__left .ulg-manage-progress-course__progress-actions--need-to-confirm .ulg-manage-progress-course__progress-action-cancel,
+body .ulg-manage-progress-lesson__row .ulg-manage-progress-lesson__details .ulg-manage-progress-lesson__left .ulg-manage-progress-lesson__progress-actions--need-to-confirm .ulg-manage-progress-lesson__progress-action-cancel,
+body .ulg-manage-progress-topic__row .ulg-manage-progress-topic__details .ulg-manage-progress-topic__left .ulg-manage-progress-topic__progress-actions--need-to-confirm .ulg-manage-progress-topic__progress-action-cancel {
+	color: var(--ldx-color-incorrect);
+	border-color: var(--ldx-color-incorrect) !important;
+
+	&:hover,
+	&:active {
+		color: #fff;
+		background-color: var(--ldx-color-incorrect);
+	}
+}
+
+// "Confirm" action link
+body .ulg-manage-progress-course__row .ulg-manage-progress-course__details .ulg-manage-progress-course__left .ulg-manage-progress-course__progress-actions--need-to-confirm .ulg-manage-progress-course__progress-action-checkbox,
+body .ulg-manage-progress-lesson__row .ulg-manage-progress-lesson__details .ulg-manage-progress-lesson__left .ulg-manage-progress-lesson__progress-actions--need-to-confirm .ulg-manage-progress-lesson__progress-action-checkbox,
+body .ulg-manage-progress-topic__row .ulg-manage-progress-topic__details .ulg-manage-progress-topic__left .ulg-manage-progress-topic__progress-actions--need-to-confirm .ulg-manage-progress-topic__progress-action-checkbox {
+	color: var(--ldx-color-correct);
+	border-color: var(--ldx-color-correct) !important;
+
+	&:hover,
+	&:active {
+		color: #fff;
+		background-color: var(--ldx-color-correct);
+	}
+}

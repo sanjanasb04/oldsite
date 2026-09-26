@@ -1,0 +1,18 @@
+= [1.0.3] 2026-01-28 =
+
+* Fix - Created users are now given a randomly generated password by default to resolve a PHP warning in WordPress 6.9.
+* Fix - Resolved an issue where the Course and Group fields would not show properly when editing an Event.
+* Tweak - Updated required PHP version to 7.4.
+* Tweak - Updated required WP version to 6.6.
+
+= [1.0.2.1] =
+
+* Fix - Fixed a fatal error when updating an event.
+* Fix - Fixed a missing LearnDash integration option on event post type.
+
+= [1.0.2] =
+
+* Fix - Remove extra input fields when editing an event.
+* Tweak - Added actions: `learndash_tec_uninstall`.
+* Tweak - Added functions: `learndash_tec_extra_autoloading`, `learndash_tec_extra_includes`.
+* Tweak - Deprecated functions: `LearnDash\the_events_calendar`.
