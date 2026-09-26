@@ -1,1 +1,0 @@
-(()=>{"use strict";const l=window.learndash||{};l.global=l.global||{},l.global.scrollOffset=l.global.scrollOffset||0})();
