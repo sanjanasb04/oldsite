@@ -1,0 +1,91 @@
+# Copyright (C) 2026 LearnDash
+# This file is distributed under the same license as the LearnDash LMS - The Events Calendar Integration plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: LearnDash LMS - The Events Calendar Integration dry-run\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/learndash-tec\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-01-14T18:52:18+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: learndash-tec\n"
+
+#. Plugin Name of the plugin
+#: learndash-tec.php
+#: src/App/Admin/Translation.php:51
+msgid "LearnDash LMS - The Events Calendar Integration"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: learndash-tec.php
+msgid "https://www.learndash.com/"
+msgstr ""
+
+#. Description of the plugin
+#: learndash-tec.php
+msgid "Integrate LearnDash LMS with The Events Calendar"
+msgstr ""
+
+#. Author of the plugin
+#: learndash-tec.php
+msgid "LearnDash"
+msgstr ""
+
+#: includes/class-integration.php:299
+#: includes/class-integration.php:401
+msgid "LearnDash Integration"
+msgstr ""
+
+#: includes/class-integration.php:381
+msgid "Course(s)"
+msgstr ""
+
+#: includes/class-integration.php:389
+msgid "Group(s)"
+msgstr ""
+
+#: learndash-tec.php:72
+msgid "LearnDash LMS"
+msgstr ""
+
+#: learndash-tec.php:78
+msgid "The Events Calendar"
+msgstr ""
+
+#: learndash-tec.php:82
+msgid "Event Tickets"
+msgstr ""
+
+#: learndash-tec.php:86
+msgid "Event Tickets Plus"
+msgstr ""
+
+#: learndash-tec.php:93
+msgid "LearnDash LMS - The Events Calendar Integration requires the following plugin(s) to be active:"
+msgstr ""
+
+#: src/deprecated/LearnDash/The_Events_Calendar.php:195
+msgid "LearnDash LMS - The Events Calendar Integration Add-on requires the following plugin(s) to be active:"
+msgstr ""
+
+#: templates/events-virtual/admin-views/virtual-metabox/container/compatibility/event-tickets/show-to-learndash.php:42
+msgctxt "Show virtual content to LearnDash enrolled students."
+msgid "LearnDash Enrolled Students"
+msgstr ""
+
+#. Translators: %1$s and %2$s are replaced with the custom labels for courses and groups.
+#: templates/events-virtual/admin-views/virtual-metabox/container/compatibility/event-tickets/show-to-learndash.php:66
+#, php-format
+msgid "Any %1$s or %2$s. (Default)"
+msgstr ""
+
+#. Translators: %1$s and %2$s are replaced with the custom labels for courses and groups, and %3$s is a link anchor.
+#: templates/events-virtual/admin-views/virtual-metabox/container/compatibility/event-tickets/show-to-learndash.php:89
+#, php-format
+msgid "Associated %1$s and/or %2$s with this event. <a href=\"%3$s\">Click here</a> to associate them."
+msgstr ""
