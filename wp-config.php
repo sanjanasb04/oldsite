@@ -22,13 +22,13 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'u133071818_kaorr' );
+define( 'DB_NAME', 'learngqw_wp389' );
 
 /** Database username */
-define( 'DB_USER', 'u133071818_kaorr' );
+define( 'DB_USER', 'learngqw_wp389' );
 
 /** Database password */
-define( 'DB_PASSWORD', '1!uF5otX3+' );
+define( 'DB_PASSWORD', 'ICert@1100' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
@@ -60,7 +60,6 @@ define( 'LOGGED_IN_SALT',    '3l1*ZE$q7jo!)U99iSvhsa<=n$gmAk~Q0r>(9 [^XtVMK7yMLv
 define( 'NONCE_SALT',        'o?L0%_D0:}qnLuSdPg507i`D!r|~UnTY6G:EIVBNT8=q/{Y=PX~U8x5l=~a:F-CV' );
 define( 'WP_CACHE_KEY_SALT', '!tnF_46FaS ^GEh220RIbe/} U5[gXY^Ih|XOt=:Lp`4@S>aP%pN3EG/f:}ZMWkg' );
 
-
 /**#@-*/
 
 /**
@@ -71,10 +70,10 @@ define( 'WP_CACHE_KEY_SALT', '!tnF_46FaS ^GEh220RIbe/} U5[gXY^Ih|XOt=:Lp`4@S>aP%
  */
 $table_prefix = 'wpwx_';
 
-
 /* Add any custom values between this line and the "stop editing" line. */
 
-
+define( 'WP_HOME', 'https://certificationpilot.com' );
+define( 'WP_SITEURL', 'https://certificationpilot.com' );
 
 /**
  * For developers: WordPress debugging mode.
