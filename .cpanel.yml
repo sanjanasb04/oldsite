@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/public_html/
-    - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp -R * $HOME/certificationpilot.com/
+    - /bin/rm -f $HOME/certificationpilot.com/index.html
