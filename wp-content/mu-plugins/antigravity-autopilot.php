@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Antigravity Site Autopilot & Brand Replacer
- * Description: Automatically replaces brand names, removes ?v= geolocation param, forces HTTPS, and manages WordPress via REST API.
- * Version: 2.0.0
+ * Description: Automatically replaces brand names, removes ?v= geolocation param, and manages WordPress via REST API.
+ * Version: 2.1.0
  * Author: Antigravity
  */
 
@@ -15,15 +15,10 @@ if (file_exists(ABSPATH . 'index.html')) {
     @unlink(ABSPATH . 'index.html');
 }
 
-// 1. Force HTTPS redirect
-add_action('init', function() {
-    if (!is_ssl() && !wp_is_json_request() && php_sapi_name() !== 'cli') {
-        if (isset($_SERVER['HTTP_HOST']) && isset($_SERVER['REQUEST_URI'])) {
-            wp_redirect('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301);
-            exit;
-        }
-    }
-}, 1);
+// 1. SSL proxy detection for Bigrock / cPanel
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
 
 // 2. Completely eliminate WooCommerce ?v=... parameter
 add_filter('woocommerce_get_geolocation_hash', '__return_empty_string', 999);
@@ -48,29 +43,9 @@ add_action('init', function() {
     }
 });
 
-// Helper for safe recursive replacement in serialized strings/arrays
-function antigravity_safe_replace($data, $search, $replace) {
-    if (is_string($data)) {
-        return str_replace($search, $replace, $data);
-    }
-    if (is_array($data)) {
-        foreach ($data as $k => $v) {
-            $data[$k] = antigravity_safe_replace($v, $search, $replace);
-        }
-        return $data;
-    }
-    if (is_object($data)) {
-        foreach ($data as $k => $v) {
-            $data->$k = antigravity_safe_replace($v, $search, $replace);
-        }
-        return $data;
-    }
-    return $data;
-}
-
 // 4. One-time database batch replacement for LearnersKart -> Certification Pilot
 add_action('init', function() {
-    if (get_option('antigravity_brand_replaced_v3') === 'done') {
+    if (get_option('antigravity_brand_replaced_v4') === 'done') {
         return;
     }
 
@@ -96,9 +71,8 @@ add_action('init', function() {
             "UPDATE {$wpdb->posts} SET 
                 post_content = REPLACE(post_content, %s, %s),
                 post_title   = REPLACE(post_title, %s, %s),
-                post_excerpt = REPLACE(post_excerpt, %s, %s),
-                guid         = REPLACE(guid, %s, %s)",
-            $search, $replace, $search, $replace, $search, $replace, $search, $replace
+                post_excerpt = REPLACE(post_excerpt, %s, %s)",
+            $search, $replace, $search, $replace, $search, $replace
         ));
 
         // 4b. Postmeta _elementor_data (pure JSON, not PHP serialized)
@@ -106,9 +80,11 @@ add_action('init', function() {
             "SELECT meta_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_elementor_data' AND meta_value LIKE %s",
             '%' . $wpdb->esc_like($search) . '%'
         ));
-        foreach ($elementor_rows as $row) {
-            $updated = str_replace($search, $replace, $row->meta_value);
-            $wpdb->update($wpdb->postmeta, ['meta_value' => $updated], ['meta_id' => $row->meta_id]);
+        if (!empty($elementor_rows)) {
+            foreach ($elementor_rows as $row) {
+                $updated = str_replace($search, $replace, $row->meta_value);
+                $wpdb->update($wpdb->postmeta, ['meta_value' => $updated], ['meta_id' => $row->meta_id]);
+            }
         }
 
         // 4c. Other postmeta non-serialized
@@ -124,10 +100,7 @@ add_action('init', function() {
         ));
     }
 
-    // Flush rewrite rules
-    flush_rewrite_rules(false);
-
-    update_option('antigravity_brand_replaced_v3', 'done');
+    update_option('antigravity_brand_replaced_v4', 'done');
 });
 
 // 5. Output buffer: replace any header logo SVG & hardcoded template mentions on frontend
