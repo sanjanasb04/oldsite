@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Antigravity Site Autopilot, Brand Replacer & Modern UI
- * Description: Automatically replaces brand names, applies modern 2026 UI system, and manages WordPress via REST API.
- * Version: 3.0.0
+ * Plugin Name: Antigravity Site Autopilot, Brand Replacer & Official Logo
+ * Description: Automatically applies official Certification Pilot logo, brand names, and modern UI system.
+ * Version: 3.1.0
  * Author: Antigravity
  */
 
@@ -45,7 +45,7 @@ add_action('init', function() {
 
 // 4. One-time database batch replacement for LearnersKart -> Certification Pilot
 add_action('init', function() {
-    if (get_option('antigravity_brand_replaced_v5') === 'done') {
+    if (get_option('antigravity_brand_replaced_v6') === 'done') {
         return;
     }
 
@@ -96,18 +96,20 @@ add_action('init', function() {
         ));
     }
 
-    update_option('antigravity_brand_replaced_v5', 'done');
+    update_option('antigravity_brand_replaced_v6', 'done');
 });
 
-// 5. Inject 2026 Modern Design System CSS into wp_head
+// 5. Inject 2026 Modern Design System CSS and Favicon into wp_head
 add_action('wp_head', function() {
+    echo '<link rel="icon" href="https://certificationpilot.com/wp-content/uploads/logos/certification-pilot-favicon.png" type="image/png" sizes="512x512" />' . "\n";
+    echo '<link rel="apple-touch-icon" href="https://certificationpilot.com/wp-content/uploads/logos/certification-pilot-favicon.png" />' . "\n";
     $css_file = __DIR__ . '/modern-ui.css';
     if (file_exists($css_file)) {
-        echo '<style id="certification-pilot-modern-ui">' . file_get_contents($css_file) . '</style>';
+        echo '<style id="certification-pilot-modern-ui">' . file_get_contents($css_file) . '</style>' . "\n";
     }
 }, 9999);
 
-// 6. Output buffer: replace any header logo SVG & hardcoded template mentions on frontend
+// 6. Output buffer: replace logo & hardcoded template mentions on frontend
 add_action('template_redirect', function() {
     if (is_admin()) {
         return;
@@ -118,28 +120,26 @@ add_action('template_redirect', function() {
             return $html;
         }
 
-        // 6a. Premium Vector Logo for Header
-        $certPilotLogo = '<a class="elementor-icon" href="https://certificationpilot.com/" style="text-decoration:none;display:inline-flex;align-items:center;gap:12px;padding:4px 0;">'
-                       . '<span style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%);border-radius:12px;box-shadow:0 6px 16px rgba(2,132,199,0.35);flex-shrink:0;">'
-                       . '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
-                       . '<path d="M12 2L4 7V12C4 16.9 7.4 20.7 12 21.9C16.6 20.7 20 16.9 20 12V7L12 2Z" fill="white" fill-opacity="0.25"/>'
-                       . '<path d="M12 2L4 7V12C4 16.9 7.4 20.7 12 21.9C16.6 20.7 20 16.9 20 12V7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
-                       . '<path d="M8.5 12.5L11 15L16 9.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>'
-                       . '</svg>'
-                       . '</span>'
-                       . '<span style="display:flex;flex-direction:column;line-height:1.15;">'
-                       . '<span style="font-size:20px;font-weight:900;letter-spacing:-0.3px;font-family:\'Plus Jakarta Sans\',sans-serif;color:#0284c7;">CERTIFICATION</span>'
-                       . '<span style="font-size:14px;font-weight:800;letter-spacing:2.5px;font-family:\'Plus Jakarta Sans\',sans-serif;color:#0f172a;">PILOT</span>'
-                       . '</span>'
-                       . '</a>';
+        // 6a. Official Airplane/CP Vector Logo for Header & Navbar
+        $officialHeaderLogo = '<a class="elementor-icon" href="https://certificationpilot.com/" style="text-decoration:none;display:inline-flex;align-items:center;padding:2px 0;">'
+                            . '<img src="https://certificationpilot.com/wp-content/uploads/logos/certification-pilot-logo-horizontal.png" alt="Certification Pilot" style="height:62px;width:auto;max-width:280px;object-fit:contain;display:block;" />'
+                            . '</a>';
 
         $html = preg_replace(
-            '/<a class="elementor-icon" href="[^"]*">\s*<svg[^>]*>.*?<\/svg>\s*<\/a>/si',
-            $certPilotLogo,
+            '/<a class="elementor-icon" href="[^"]*">.*?<\/a>/si',
+            $officialHeaderLogo,
+            $html,
+            1
+        );
+
+        // 6b. Replace footer logo / cropped-hd-logo-1
+        $html = preg_replace(
+            '/<img[^>]+src="[^"]*cropped-hd-logo-1[^"]*"[^>]*>/si',
+            '<img src="https://certificationpilot.com/wp-content/uploads/logos/certification-pilot-logo-horizontal.png" title="Certification Pilot Logo" alt="Certification Pilot Logo" style="height:48px;width:auto;object-fit:contain;" />',
             $html
         );
 
-        // 6b. String replacements for any remaining mentions in widgets, menus, titles
+        // 6c. String replacements for any remaining mentions in widgets, menus, titles
         $search = [
             'LEARNERSKART',
             'LearnersKart',
