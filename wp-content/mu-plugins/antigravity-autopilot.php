@@ -62,23 +62,29 @@ add_action('template_redirect', function() {
         }
 
         // 6a. Official Airplane/CP Vector Logo for Header & Navbar
-        $officialHeaderLogo = '<a class="elementor-icon" href="https://certificationpilot.com/" style="text-decoration:none;display:inline-flex;align-items:center;padding:2px 0;">'
+        $officialHeaderLogo = '<a class="cp-official-logo" href="https://certificationpilot.com/" style="text-decoration:none;display:inline-flex;align-items:center;padding:2px 0;">'
                             . '<img src="https://certificationpilot.com/wp-content/uploads/2026/11/certification-pilot-logo-horizontal.png" alt="Certification Pilot" style="height:62px;width:auto;max-width:280px;object-fit:contain;display:block;" />'
                             . '</a>';
 
         $html = preg_replace(
-            '/<a class="elementor-icon" href="[^"]*">[^<]*(?:<[^a\/][^>]*>[^<]*)*<\/a>/si',
-            $officialHeaderLogo,
+            '/<div class="elementor-element elementor-element-08bde2f[^"]*"[^>]*>.*?<\/div>\s*<\/div>\s*<\/div>/s',
+            '<div class="elementor-element elementor-element-08bde2f elementor-widget elementor-widget-icon" data-element_type="widget"><div class="elementor-widget-container"><div class="elementor-icon-wrapper">' . $officialHeaderLogo . '</div></div></div>',
             $html,
             1
         );
 
-        // 6b. Replace footer logo / cropped-hd-logo-1
-        $html = preg_replace(
-            '/<img[^>]+src="[^"]*cropped-hd-logo-1[^"]*"[^>]*>/si',
-            '<img src="https://certificationpilot.com/wp-content/uploads/2026/11/certification-pilot-logo-horizontal.png" title="Certification Pilot Logo" alt="Certification Pilot Logo" style="height:48px;width:auto;object-fit:contain;" />',
-            $html
-        );
+        // 6b. Replace footer logo & old logo images
+        $oldLogoFiles = [
+            'cropped-hd-logo-1.png',
+            'cropped-hd-logo-1-300x70.png',
+            'cropped-hd-logo-1-1024x239.png',
+            'cropped-hd-logo-1-768x179.png',
+            'cropped-hd-logo-1-1536x359.png',
+            'logos/certification-pilot-logo-horizontal.png'
+        ];
+        foreach ($oldLogoFiles as $olf) {
+            $html = str_replace($olf, '2026/11/certification-pilot-logo-horizontal.png', $html);
+        }
 
         // 6c. Replace old course image placeholders with official course covers
         $courseImageReplacements = [
