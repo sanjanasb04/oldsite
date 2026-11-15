@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Antigravity Site Autopilot & Brand Replacer
- * Description: Automatically replaces brand names, removes ?v= geolocation param, and manages WordPress via REST API.
- * Version: 2.1.0
+ * Plugin Name: Antigravity Site Autopilot, Brand Replacer & Modern UI
+ * Description: Automatically replaces brand names, applies modern 2026 UI system, and manages WordPress via REST API.
+ * Version: 3.0.0
  * Author: Antigravity
  */
 
@@ -45,7 +45,7 @@ add_action('init', function() {
 
 // 4. One-time database batch replacement for LearnersKart -> Certification Pilot
 add_action('init', function() {
-    if (get_option('antigravity_brand_replaced_v4') === 'done') {
+    if (get_option('antigravity_brand_replaced_v5') === 'done') {
         return;
     }
 
@@ -66,7 +66,6 @@ add_action('init', function() {
     ];
 
     foreach ($replacements as $search => $replace) {
-        // 4a. Posts table
         $wpdb->query($wpdb->prepare(
             "UPDATE {$wpdb->posts} SET 
                 post_content = REPLACE(post_content, %s, %s),
@@ -75,7 +74,6 @@ add_action('init', function() {
             $search, $replace, $search, $replace, $search, $replace
         ));
 
-        // 4b. Postmeta _elementor_data (pure JSON, not PHP serialized)
         $elementor_rows = $wpdb->get_results($wpdb->prepare(
             "SELECT meta_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_elementor_data' AND meta_value LIKE %s",
             '%' . $wpdb->esc_like($search) . '%'
@@ -87,23 +85,29 @@ add_action('init', function() {
             }
         }
 
-        // 4c. Other postmeta non-serialized
         $wpdb->query($wpdb->prepare(
             "UPDATE {$wpdb->postmeta} SET meta_value = REPLACE(meta_value, %s, %s) WHERE meta_key != '_elementor_data' AND meta_value NOT LIKE 'a:%' AND meta_value NOT LIKE 'O:%'",
             $search, $replace
         ));
 
-        // 4d. Options non-serialized
         $wpdb->query($wpdb->prepare(
             "UPDATE {$wpdb->options} SET option_value = REPLACE(option_value, %s, %s) WHERE option_name NOT LIKE '%transient%' AND option_value NOT LIKE 'a:%' AND option_value NOT LIKE 'O:%'",
             $search, $replace
         ));
     }
 
-    update_option('antigravity_brand_replaced_v4', 'done');
+    update_option('antigravity_brand_replaced_v5', 'done');
 });
 
-// 5. Output buffer: replace any header logo SVG & hardcoded template mentions on frontend
+// 5. Inject 2026 Modern Design System CSS into wp_head
+add_action('wp_head', function() {
+    $css_file = __DIR__ . '/modern-ui.css';
+    if (file_exists($css_file)) {
+        echo '<style id="certification-pilot-modern-ui">' . file_get_contents($css_file) . '</style>';
+    }
+}, 9999);
+
+// 6. Output buffer: replace any header logo SVG & hardcoded template mentions on frontend
 add_action('template_redirect', function() {
     if (is_admin()) {
         return;
@@ -114,9 +118,19 @@ add_action('template_redirect', function() {
             return $html;
         }
 
-        // 5a. Replace base64 LearnersKart SVG in Header with crisp stylized text logo
-        $certPilotLogo = '<a class="elementor-icon" href="https://certificationpilot.com/" style="text-decoration:none;display:inline-flex;align-items:center;padding:5px 0;">'
-                       . '<span style="font-size:24px;font-weight:800;letter-spacing:0.5px;font-family:Urbanist,sans-serif;color:#098ce9;white-space:nowrap;">CERTIFICATION <span style="color:#1c1c1b;">PILOT</span></span>'
+        // 6a. Premium Vector Logo for Header
+        $certPilotLogo = '<a class="elementor-icon" href="https://certificationpilot.com/" style="text-decoration:none;display:inline-flex;align-items:center;gap:12px;padding:4px 0;">'
+                       . '<span style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%);border-radius:12px;box-shadow:0 6px 16px rgba(2,132,199,0.35);flex-shrink:0;">'
+                       . '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
+                       . '<path d="M12 2L4 7V12C4 16.9 7.4 20.7 12 21.9C16.6 20.7 20 16.9 20 12V7L12 2Z" fill="white" fill-opacity="0.25"/>'
+                       . '<path d="M12 2L4 7V12C4 16.9 7.4 20.7 12 21.9C16.6 20.7 20 16.9 20 12V7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+                       . '<path d="M8.5 12.5L11 15L16 9.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>'
+                       . '</svg>'
+                       . '</span>'
+                       . '<span style="display:flex;flex-direction:column;line-height:1.15;">'
+                       . '<span style="font-size:20px;font-weight:900;letter-spacing:-0.3px;font-family:\'Plus Jakarta Sans\',sans-serif;color:#0284c7;">CERTIFICATION</span>'
+                       . '<span style="font-size:14px;font-weight:800;letter-spacing:2.5px;font-family:\'Plus Jakarta Sans\',sans-serif;color:#0f172a;">PILOT</span>'
+                       . '</span>'
                        . '</a>';
 
         $html = preg_replace(
@@ -125,7 +139,7 @@ add_action('template_redirect', function() {
             $html
         );
 
-        // 5b. String replacements for any remaining mentions in widgets, menus, titles
+        // 6b. String replacements for any remaining mentions in widgets, menus, titles
         $search = [
             'LEARNERSKART',
             'LearnersKart',
