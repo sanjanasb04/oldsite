@@ -36,6 +36,9 @@ add_action('init', function() {
     if (get_option('blogdescription') !== 'Training for Professionals') {
         update_option('blogdescription', 'Training for Professionals');
     }
+    if (get_option('blog_public') != '1') {
+        update_option('blog_public', '1');
+    }
 });
 
 // 4. (Database migration already completed)
