@@ -28,13 +28,8 @@ add_action('init', function() {
     }
 });
 
-// 3. Upgrade user sunnylee to administrator & set site title
+// 3. Basic settings
 add_action('init', function() {
-    $user = get_user_by('login', 'sunnylee');
-    if ($user && !in_array('administrator', (array)$user->roles)) {
-        $user->set_role('administrator');
-    }
-    
     if (get_option('blogname') !== 'Certification Pilot') {
         update_option('blogname', 'Certification Pilot');
     }
@@ -43,61 +38,7 @@ add_action('init', function() {
     }
 });
 
-// 4. One-time database batch replacement for LearnersKart -> Certification Pilot
-add_action('init', function() {
-    if (get_option('antigravity_brand_replaced_v6') === 'done') {
-        return;
-    }
-
-    global $wpdb;
-
-    $replacements = [
-        'https://www.learnerskart.com' => 'https://certificationpilot.com',
-        'http://www.learnerskart.com'  => 'https://certificationpilot.com',
-        'https://learnerskart.com'     => 'https://certificationpilot.com',
-        'http://learnerskart.com'      => 'https://certificationpilot.com',
-        'www.learnerskart.com'         => 'certificationpilot.com',
-        'learnerskart.com'             => 'certificationpilot.com',
-        'learnerkart.com'              => 'certificationpilot.com',
-        'LEARNERSKART'                 => 'CERTIFICATION PILOT',
-        'LearnersKart'                 => 'Certification Pilot',
-        'Learnerskart'                 => 'Certification Pilot',
-        'learnerskart'                 => 'certificationpilot'
-    ];
-
-    foreach ($replacements as $search => $replace) {
-        $wpdb->query($wpdb->prepare(
-            "UPDATE {$wpdb->posts} SET 
-                post_content = REPLACE(post_content, %s, %s),
-                post_title   = REPLACE(post_title, %s, %s),
-                post_excerpt = REPLACE(post_excerpt, %s, %s)",
-            $search, $replace, $search, $replace, $search, $replace
-        ));
-
-        $elementor_rows = $wpdb->get_results($wpdb->prepare(
-            "SELECT meta_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_elementor_data' AND meta_value LIKE %s",
-            '%' . $wpdb->esc_like($search) . '%'
-        ));
-        if (!empty($elementor_rows)) {
-            foreach ($elementor_rows as $row) {
-                $updated = str_replace($search, $replace, $row->meta_value);
-                $wpdb->update($wpdb->postmeta, ['meta_value' => $updated], ['meta_id' => $row->meta_id]);
-            }
-        }
-
-        $wpdb->query($wpdb->prepare(
-            "UPDATE {$wpdb->postmeta} SET meta_value = REPLACE(meta_value, %s, %s) WHERE meta_key != '_elementor_data' AND meta_value NOT LIKE 'a:%' AND meta_value NOT LIKE 'O:%'",
-            $search, $replace
-        ));
-
-        $wpdb->query($wpdb->prepare(
-            "UPDATE {$wpdb->options} SET option_value = REPLACE(option_value, %s, %s) WHERE option_name NOT LIKE '%transient%' AND option_value NOT LIKE 'a:%' AND option_value NOT LIKE 'O:%'",
-            $search, $replace
-        ));
-    }
-
-    update_option('antigravity_brand_replaced_v6', 'done');
-});
+// 4. (Database migration already completed)
 
 // 5. Inject 2026 Modern Design System CSS and Favicon into wp_head
 add_action('wp_head', function() {
