@@ -203,33 +203,116 @@ div[class*="yellowTopHeader"] {
   transform: translateX(4px);
 }
 
-/* Header Login / Account Button */
+/* ==========================================================================
+   Header Login / Account Button - Modern Ultra-Smooth UI (2026 SaaS Design)
+   ========================================================================== */
+.elementor-widget-thim-login-popup {
+  display: inline-flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+}
+
 .thim-link-login,
+.thim-login-popup {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.thim-link-login a.login,
+.thim-login-popup a.login,
+a[href*="/account/"].login,
 a[href*="/login/"],
 a[href*="my-account"],
 .thim-ekits-menu__nav li.menu-item a.thim-button,
 .elementor-button-link[href*="login"],
 a.button-login {
-  background: var(--cp-primary-gradient) !important;
-  color: #ffffff !important;
-  border-radius: var(--cp-radius-full) !important;
-  padding: 9px 24px !important;
-  font-weight: 700 !important;
-  font-size: 14px !important;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35) !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border: none !important;
+  gap: 7px !important;
+  height: 38px !important;
+  padding: 0 20px !important;
+  background: linear-gradient(135deg, #098CE9 0%, #0369a1 100%) !important;
+  color: #ffffff !important;
+  font-family: var(--cp-font, 'Urbanist', -apple-system, sans-serif) !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  line-height: 1 !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 3px 10px -2px rgba(9, 140, 233, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  -webkit-font-smoothing: antialiased !important;
 }
 
-.thim-link-login:hover,
+/* User avatar icon inside Login button */
+.thim-link-login a.login::before,
+.thim-login-popup a.login::before,
+a[href*="/account/"].login::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 14px !important;
+  height: 14px !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  opacity: 0.9 !important;
+  transition: transform 0.25s ease !important;
+  flex-shrink: 0 !important;
+}
+
+/* Subtle gloss shine overlay */
+.thim-link-login a.login::after,
+.thim-login-popup a.login::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+  transition: left 0.5s ease !important;
+}
+
+/* Hover state - smooth elegant lift and soft diffused shadow */
+.thim-link-login a.login:hover,
+.thim-login-popup a.login:hover,
+a[href*="/account/"].login:hover,
 a[href*="/login/"]:hover,
 a[href*="my-account"]:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.5) !important;
+  background: linear-gradient(135deg, #0284c7 0%, #025a8d 100%) !important;
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 6px 16px -2px rgba(9, 140, 233, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
   color: #ffffff !important;
+}
+
+.thim-link-login a.login:hover::before,
+.thim-login-popup a.login:hover::before {
+  transform: scale(1.08) !important;
+  opacity: 1 !important;
+}
+
+.thim-link-login a.login:hover::after,
+.thim-login-popup a.login:hover::after {
+  left: 100% !important;
+}
+
+/* Active / Press state */
+.thim-link-login a.login:active,
+.thim-login-popup a.login:active {
+  transform: translateY(0.5px) scale(0.98) !important;
+  box-shadow: 0 2px 6px rgba(9, 140, 233, 0.25) !important;
 }
 
 /* Search and Cart Icons in Header */
