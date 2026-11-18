@@ -529,3 +529,50 @@ footer a:hover,
     background: #f1f5f9 !important;
   }
 }
+
+/* ==========================================================================
+   Homepage Hero Section Overhaul
+   ========================================================================== */
+.elementor-element-1a702ae,
+.elementor-element-744e469 {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.elementor-element-6df0924 .title,
+.elementor-element-6df0924 h3,
+.elementor-element-6df0924 h1,
+.cp-hero-quote {
+  font-family: var(--cp-font) !important;
+  font-size: clamp(32px, 4.5vw, 52px) !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.035em !important;
+  color: var(--cp-secondary) !important;
+  margin-top: 10px !important;
+  margin-bottom: 26px !important;
+}
+
+.elementor-element-30d7dc3 {
+  margin-left: 0 !important;
+}
+
+.elementor-element-30d7dc3 .elementor-widget-container {
+  margin-left: 0 !important;
+}
+
+.elementor-element-099305c img {
+  border-radius: 20px !important;
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.12), 0 10px 20px -8px rgba(15, 23, 42, 0.06) !important;
+  transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.elementor-element-099305c img:hover {
+  transform: translateY(-4px) scale(1.01) !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.18) !important;
+}

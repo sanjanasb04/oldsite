@@ -41,7 +41,92 @@ add_action('init', function() {
     }
 });
 
-// 4. (Database migration already completed)
+// 4. One-time Homepage Hero Section Update
+add_action('init', function() {
+    if (get_option('cp_homepage_hero_updated_v2') === 'done') {
+        return;
+    }
+
+    global $wpdb;
+    $post_id = 25575;
+
+    // 4a. Update _elementor_data for Page 25575
+    $raw_el_data = get_post_meta($post_id, '_elementor_data', true);
+    if (!empty($raw_el_data)) {
+        $el_data = json_decode($raw_el_data, true);
+        if (is_array($el_data)) {
+            foreach ($el_data as &$sec) {
+                if (isset($sec['id']) && $sec['id'] === '9757aa5') {
+                    if (isset($sec['elements']) && is_array($sec['elements'])) {
+                        foreach ($sec['elements'] as &$col) {
+                            if (isset($col['id']) && $col['id'] === '1dcbe48') {
+                                $new_widgets = [];
+                                foreach ($col['elements'] as &$w) {
+                                    $wid = isset($w['id']) ? $w['id'] : '';
+                                    if (in_array($wid, ['1a702ae', '744e469'])) {
+                                        continue;
+                                    }
+                                    if ($wid === '6df0924') {
+                                        $w['settings']['size'] = 'h1';
+                                        $w['settings']['heading_typography_font_size'] = ['unit' => 'px', 'size' => 46, 'sizes' => []];
+                                        $w['settings']['heading_typography_font_size_tablet'] = ['unit' => 'px', 'size' => 38, 'sizes' => []];
+                                        $w['settings']['heading_typography_font_size_mobile'] = ['unit' => 'px', 'size' => 28, 'sizes' => []];
+                                        $w['settings']['heading_typography_font_weight'] = '800';
+                                        $w['settings']['heading_typography_line_height'] = ['unit' => 'em', 'size' => 1.25, 'sizes' => []];
+                                        $w['settings']['heading_margin'] = ['unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '24', 'left' => '0', 'isLinked' => false];
+                                        $w['settings']['_margin'] = ['unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => false];
+                                    }
+                                    if ($wid === '30d7dc3') {
+                                        if (isset($w['settings']['_margin']['left'])) {
+                                            $w['settings']['_margin']['left'] = '0';
+                                        }
+                                    }
+                                    $new_widgets[] = $w;
+                                }
+                                $col['elements'] = $new_widgets;
+                            }
+                            if (isset($col['id']) && $col['id'] === 'c3d0fc9') {
+                                foreach ($col['elements'] as &$w) {
+                                    if (isset($w['id']) && $w['id'] === '099305c') {
+                                        $w['settings']['image'] = [
+                                            'url' => 'https://certificationpilot.com/wp-content/uploads/2026/11/hero-office.png',
+                                            'id' => 36269,
+                                            'size' => '',
+                                            'alt' => "Certification Pilot - Learners' Success",
+                                            'source' => 'library'
+                                        ];
+                                        $w['settings']['width'] = ['unit' => 'px', 'size' => 580, 'sizes' => []];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            $updated_json = json_encode($el_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+            update_post_meta($post_id, '_elementor_data', wp_slash($updated_json));
+        }
+    }
+
+    // 4b. Update post_content in wp_posts
+    $post = get_post($post_id);
+    if ($post) {
+        $content = $post->post_content;
+        $content = preg_replace('/<h3>Transform Your Career to Next Level.*?<\/h3>\s*<h2>Learn, Certify, Lead with Confidence.*?<\/h2>\s*<h3>"Certification is a key to learners\' success".*?<\/h3>/s', '<h1 class="cp-hero-quote">"Certification is a key to learners\' success"</h1>', $content);
+        $content = str_replace('freepik__adjust__35551-Photoroom.png', 'hero-office.png', $content);
+        wp_update_post([
+            'ID' => $post_id,
+            'post_content' => $content
+        ]);
+    }
+
+    // 4c. Flush Elementor CSS cache
+    if (class_exists('\Elementor\Plugin')) {
+        \Elementor\Plugin::$instance->files_manager->clear_cache();
+    }
+
+    update_option('cp_homepage_hero_updated_v2', 'done');
+});
 
 // 5. Inject 2026 Modern Design System CSS and Favicon into wp_head
 add_action('wp_head', function() {
@@ -89,7 +174,7 @@ add_action('template_redirect', function() {
             $html = str_replace($olf, '2026/11/certification-pilot-logo-horizontal.png', $html);
         }
 
-        // 6c. Replace old course image placeholders with official course covers
+        // 6c. Replace old course image placeholders & hero image with official assets
         $courseImageReplacements = [
             '2149595847-1-1024x683.jpg' => 'pmp-v6.jpg',
             '2149595847-666x450.jpg'      => 'pmp-v6.jpg',
@@ -97,10 +182,20 @@ add_action('template_redirect', function() {
             '2149595850-666x450.jpg'      => 'lssyb-v3.jpg',
             '167088-666x450.jpg'          => 'lssbb-v3.jpg',
             '2147826617-666x450.jpg'      => 'lssgb-v3.jpg',
+            'freepik__adjust__35551-Photoroom.png' => 'hero-office.png',
         ];
         foreach ($courseImageReplacements as $oldImg => $newImg) {
             $html = str_replace($oldImg, $newImg, $html);
         }
+
+        // 6d. Hero section cleanup: hide old hero headings if rendered from template cache
+        $html = str_replace([
+            'Transform Your Career to Next Level  .',
+            'Transform Your Career to Next Level .',
+            'Transform Your Career to Next Level',
+            'Learn, Certify, Lead with Confidence,',
+            'Learn, Certify, Lead with Confidence'
+        ], '', $html);
 
         // 6d. String replacements for any remaining mentions in widgets, menus, titles
         $search = [
