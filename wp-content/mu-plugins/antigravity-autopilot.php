@@ -102,8 +102,9 @@ add_action('template_redirect', function() {
             $html = str_replace($oldImg, $newImg, $html);
         }
 
-        // Restore original hero image (freepik__adjust__35551-Photoroom.png)
-        $html = str_replace('hero-office.png', 'freepik__adjust__35551-Photoroom.png', $html);
+        // Restore original hero image cleanly (freepik__adjust__35551-Photoroom.png)
+        $hero_freepik_html = '<img fetchpriority="high" decoding="async" width="600" height="450" src="https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom.png" class="attachment-full size-full wp-image-33046" alt="Certification Pilot - Learners\' Success" srcset="https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom.png 1280w, https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom-300x225.png 300w, https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom-1024x768.png 1024w, https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom-768x576.png 768w, https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom-600x450.png 600w" sizes="(max-width: 1024px) 100vw, 600px" />';
+        $html = preg_replace('/<img[^>]+(?:hero-office|freepik__adjust__35551)[^>]+>/i', $hero_freepik_html, $html);
 
         // 6d. Hero section cleanup: completely strip old heading widgets and phrases
         $html = preg_replace('/<div class="elementor-element elementor-element-(?:1a702ae|744e469)[^"]*"[^>]*>.*?<\/div>\s*<\/div>/s', '', $html);
