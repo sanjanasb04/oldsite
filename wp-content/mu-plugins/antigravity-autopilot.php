@@ -102,9 +102,9 @@ add_action('template_redirect', function() {
             $html = str_replace($oldImg, $newImg, $html);
         }
 
-        // Restore original hero image cleanly (freepik__adjust__35551-Photoroom.png)
-        $hero_freepik_html = '<img fetchpriority="high" decoding="async" width="600" height="450" src="https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom.png" class="attachment-full size-full wp-image-33046" alt="Certification Pilot - Learners\' Success" srcset="https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom.png 1280w, https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom-300x225.png 300w, https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom-1024x768.png 1024w, https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom-768x576.png 768w, https://certificationpilot.com/wp-content/uploads/2025/06/freepik__adjust__35551-Photoroom-600x450.png 600w" sizes="(max-width: 1024px) 100vw, 600px" />';
-        $html = preg_replace('/<img[^>]+(?:hero-office|freepik__adjust__35551)[^>]+>/i', $hero_freepik_html, $html);
+        // Official 2026 Hero Banner (Gemini Generated)
+        $hero_banner_html = '<img fetchpriority="high" decoding="async" width="1024" height="571" src="https://certificationpilot.com/wp-content/uploads/2026/11/hero-gemini-banner.jpg" class="attachment-full size-full wp-image-36272" alt="Certification Pilot - Learners\' Success" srcset="https://certificationpilot.com/wp-content/uploads/2026/11/hero-gemini-banner.jpg 1400w, https://certificationpilot.com/wp-content/uploads/2026/11/hero-gemini-banner-1024x571.jpg 1024w, https://certificationpilot.com/wp-content/uploads/2026/11/hero-gemini-banner-768x428.jpg 768w, https://certificationpilot.com/wp-content/uploads/2026/11/hero-gemini-banner-600x335.jpg 600w, https://certificationpilot.com/wp-content/uploads/2026/11/hero-gemini-banner-300x167.jpg 300w" sizes="(max-width: 1024px) 100vw, 600px" style="border-radius:18px;box-shadow:0 20px 40px rgba(10,37,64,0.12);max-width:100%;height:auto;object-fit:cover;" />';
+        $html = preg_replace('/<img[^>]+(?:hero-office|freepik__adjust__35551)[^>]+>/i', $hero_banner_html, $html);
 
         // 6d. Hero section cleanup: completely strip old heading widgets and phrases
         $html = preg_replace('/<div class="elementor-element elementor-element-(?:1a702ae|744e469)[^"]*"[^>]*>.*?<\/div>\s*<\/div>/s', '', $html);
