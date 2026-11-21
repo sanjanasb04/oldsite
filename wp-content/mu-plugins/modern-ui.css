@@ -206,23 +206,45 @@ div[class*="yellowTopHeader"] {
 /* ==========================================================================
    Header Login / Account Button - Modern Ultra-Smooth UI (2026 SaaS Design)
    ========================================================================== */
-.elementor-widget-thim-login-popup {
-  display: inline-flex !important;
-  align-items: center !important;
-  margin: 0 !important;
-}
-
-.thim-link-login,
-.thim-login-popup {
+.elementor-14400 .elementor-element.elementor-element-3bff642,
+.elementor-14400 .elementor-element.elementor-element-3bff642 > .elementor-widget-container,
+.elementor-14400 .elementor-element.elementor-element-3bff642:hover > .elementor-widget-container,
+.elementor-element-3bff642,
+.elementor-element-3bff642 > .elementor-widget-container,
+.elementor-element-3bff642:hover > .elementor-widget-container,
+.elementor-widget-thim-login-popup,
+.elementor-widget-thim-login-popup > .elementor-widget-container,
+.elementor-widget-thim-login-popup:hover > .elementor-widget-container {
   background: transparent !important;
+  background-color: transparent !important;
   box-shadow: none !important;
   border: none !important;
+  border-radius: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
   display: inline-flex !important;
   align-items: center !important;
+  justify-content: center !important;
 }
 
+.thim-link-login,
+.thim-login-popup,
+.elementor-element-3bff642 .thim-link-login {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.elementor-14400 .elementor-element.elementor-element-3bff642 .thim-link-login a,
+.elementor-element-3bff642 .thim-link-login a,
+.elementor-widget-thim-login-popup .thim-link-login a,
 .thim-link-login a.login,
 .thim-login-popup a.login,
 a[href*="/account/"].login,

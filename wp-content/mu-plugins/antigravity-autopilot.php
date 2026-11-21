@@ -89,7 +89,7 @@ add_action('template_redirect', function() {
             $html = str_replace($olf, '2026/11/certification-pilot-logo-horizontal.png', $html);
         }
 
-        // 6c. Replace old course image placeholders & hero image with official assets
+        // 6c. Course images
         $courseImageReplacements = [
             '2149595847-1-1024x683.jpg' => 'pmp-v6.jpg',
             '2149595847-666x450.jpg'      => 'pmp-v6.jpg',
@@ -102,10 +102,8 @@ add_action('template_redirect', function() {
             $html = str_replace($oldImg, $newImg, $html);
         }
 
-        // Hero image replacement: swap the entire freepik hero img tag with hero-office.png
-        $hero_office_img = '<img fetchpriority="high" decoding="async" width="600" height="420" src="https://certificationpilot.com/wp-content/uploads/2026/11/hero-office.png" class="attachment-full size-full wp-image-36269" alt="Certification is a key to learners\' success" />';
-        $html = preg_replace('/<img[^>]+freepik__adjust__35551[^>]+>/i', $hero_office_img, $html);
-        $html = preg_replace('/freepik__adjust__35551-Photoroom(-\d+x\d+)?\.png/i', 'hero-office.png', $html);
+        // Restore original hero image (freepik__adjust__35551-Photoroom.png)
+        $html = str_replace('hero-office.png', 'freepik__adjust__35551-Photoroom.png', $html);
 
         // 6d. Hero section cleanup: completely strip old heading widgets and phrases
         $html = preg_replace('/<div class="elementor-element elementor-element-(?:1a702ae|744e469)[^"]*"[^>]*>.*?<\/div>\s*<\/div>/s', '', $html);
